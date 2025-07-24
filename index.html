@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VS Code Web Clone</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark">
+  <div id="app">
+    <div id="sidebar">
+      <h3>Explorer</h3>
+      <div id="file-tree"></div>
+      <button onclick="createFile()">📄 New File</button>
+      <button onclick="createFolder()">📁 New Folder</button>
+      <h3>Extensions</h3>
+      <button onclick="enableExtension('colorPicker')">🎨 Color Picker</button>
+      <button onclick="enableExtension('formatter')">🧹 Formatter</button>
+    </div>
+
+    <div id="main">
+      <div id="topbar">
+        <input id="projectName" placeholder="Project Name">
+        <select id="projectSelector" onchange="loadProject()"></select>
+        <button onclick="saveProject()">💾 Save Project</button>
+        <button onclick="downloadZip()">⬇️ Export ZIP</button>
+        <button onclick="saveCurrentFile()">💾 Save File</button>
+        <button onclick="toggleTheme()">🌗 Theme</button>
+      </div>
+
+      <div id="tabs">
+        <button onclick="openTab('html')">index.html</button>
+        <button onclick="openTab('css')">style.css</button>
+        <button onclick="openTab('js')">script.js</button>
+      </div>
+
+      <div id="editor">
+        <textarea id="html" oninput="updatePreview(); autoSave()" spellcheck="false"></textarea>
+        <textarea id="css" oninput="autoSave()" spellcheck="false"></textarea>
+        <textarea id="js" oninput="autoSave()" spellcheck="false"></textarea>
+      </div>
+
+      <div id="actions">
+        <button onclick="formatCode()">🧼 Format Code</button>
+      </div>
+
+      <div id="preview-console">
+        <iframe id="preview"></iframe>
+        <div id="console"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <script src="script.js"></script>
+</body>
+  </html>
